@@ -1,28 +1,25 @@
 import React from "react";
-import { useState } from "react";
 
 const Card = (props) => {
-  const [isFlipped, setIsFlipped] = useState(false)
-
   const handleClick = () => {
-    setIsFlipped(!isFlipped)
-    console.log(isFlipped)
+    !props.isFlipped && props.onClick(props.index)
   }
 
-  if (isFlipped === false) {
+  if (props.isFlipped === false) {
     return (
       <div className="card" onClick={handleClick}>
-        {props.cardValue}
+        {props.card.card}
       </div>
     )
   }
 
   return (
-    <div className="card-flip" onClick={handleClick}>
-      {props.cardValue}
+    <div>
+      <div className="card-flip" onClick={handleClick}>
+        {props.card.value}
+      </div>
     </div>
   )
-
 }
 
 export default Card

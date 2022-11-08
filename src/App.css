@@ -13,6 +13,7 @@
   border-style: solid;
   border-color: #536878;
   color: orange;
+  cursor: pointer;
 }
 
 .card-flip {
@@ -21,7 +22,7 @@
   background-color: lightblue;
   border-style: solid;
   border-color: #536878;
-  color: orange;
+  color: white;
 }
 
 .card-list {
@@ -30,4 +31,6 @@
   grid-gap: 1rem;
   margin: 10px;
   padding: 10px;
+  justify-items: center;
+  align-items: stretch;
 }
