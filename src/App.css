@@ -15,6 +15,15 @@
   color: orange;
 }
 
+.card-flip {
+  height: 100px;
+  width: 75px;
+  background-color: lightblue;
+  border-style: solid;
+  border-color: #536878;
+  color: orange;
+}
+
 .card-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
