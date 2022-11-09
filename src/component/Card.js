@@ -1,23 +1,15 @@
 import React from "react";
+import { useState, useEffect } from 'react';
 
-const Card = (props) => {
+const Card = ({card, handleCardClick}) => {
+
   const handleClick = () => {
-    !props.isFlipped && props.onClick(props.index)
+    handleCardClick(card)
   }
-
-  if (props.isFlipped === false) {
-    return (
-      <div className="card" onClick={handleClick}>
-        {props.card.card}
-      </div>
-    )
-  }
-
+  
   return (
-    <div>
-      <div className="card-flip" onClick={handleClick}>
-        {props.card.value}
-      </div>
+    <div className="card" onClick={handleClick}>
+      {card.card}
     </div>
   )
 }
