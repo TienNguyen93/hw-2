@@ -1,23 +1,27 @@
 import './App.css';
 import Card from './component/Card';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const cardValues = [
   {
     card: "Card",
-    type: "orange"
+    type: "orange",
+    match: false
   },
   {
     card: "Card",
-    type: "apple"
+    type: "apple",
+    match: false
   },
   {
     card: "Card",
-    type: "melon"
+    type: "melon",
+    match: false
   },
   {
     card: "Card",
-    type: "strawberry"
+    type: "strawberry",
+    match: false
   }
 ]
 
@@ -36,8 +40,9 @@ function shuffle(arr) {
 
 function App() {
   const [cards, setCards] = useState([])
-  const [clickOne, setClickOne] = useState(null)
-  const [clickTwo, setClickTwo] = useState(null)
+  const [cardsChosen, setCardsChosen] = useState([])    
+  const [cardsChosenIds, setCardsChosenIds] = useState([]) 
+  const [openCards, setOpenCards] = useState([])
 
   // create a shuffled board of cards
   const createBoard = () => {
@@ -46,34 +51,40 @@ function App() {
     setCards(shuffled)
   }
 
-  const handleCardClick = (card) => {
-    clickOne ? setClickTwo(card) : setClickOne(card)
-  }
+  const flipCard = (card, index) => {
+    console.log("card here", card, index)
 
-  console.log(clickOne, clickTwo)
+    if (cardsChosenIds.length === 1 && cardsChosenIds[0] === index) {
+      console.log('huh?')
+      return
+    }
 
-  // compare the selected cards
-  // useEffect for when the app first mount & 
-  // when the dependency changes 
-  useEffect(() => {
-    // if clickOne and clickTwo are not null
-    if (clickOne && clickTwo) {
-      if (clickOne.type === clickTwo.type) {
-        console.log('cards match')
-        reset()
-      } else {
-        console.log('no match')
-        reset()
+    if (cardsChosen.length < 2) {
+      setCardsChosen(cardsChosen => cardsChosen.concat(card))
+      setCardsChosenIds(cardsChosenIds => cardsChosenIds.concat(index))
+
+      console.log('cards chosen ', cardsChosen)
+      console.log('cards chosen id', cardsChosenIds)
+
+      if (cardsChosen.length === 1) {
+        // check if the types are the same
+        if (cardsChosen[0] === card) {
+          setOpenCards(openCards => openCards.concat([cardsChosen[0], card]))
+        }
+        setTimeout(() => {
+          setCardsChosenIds([])
+          setCardsChosen([])
+        }, 700)
       }
     }
-  }, [clickOne, clickTwo])
-  
-
-  // reset if 2 cards don't match
-  const reset = () => {
-    setClickOne(null)
-    setClickTwo(null)
   }
+
+  const isCardChosen = (card, index) => {
+    console.log('isCardChosen function', card, index)
+    return cardsChosenIds.includes(index) || openCards.includes(card)
+  }
+
+  
 
   return (
     <div className='App'>
@@ -81,8 +92,11 @@ function App() {
         {cards.map((card, index) => (
           <Card 
             key={index} 
-            card={card} 
-            handleCardClick={handleCardClick}/>
+            card={card}
+            index={index}
+            handleCardClick={flipCard}
+            isCardChosen={isCardChosen}
+          />
         ))}
       </div>
       <button onClick={createBoard}>New Game</button>

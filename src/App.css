@@ -6,16 +6,6 @@
   justify-content: center;
 }
 
-.card {
-  height: 100px;
-  width: 75px;
-  background-color: #F5F5DC;
-  border-style: solid;
-  border-color: #536878;
-  color: orange;
-  cursor: pointer;
-}
-
 .card-flip {
   height: 100px;
   width: 75px;
@@ -34,3 +24,27 @@
   justify-items: center;
   align-items: stretch;
 }
+
+
+.card {
+  height: 100px;
+  width: 75px;
+  background-color: #F5F5DC;
+  border-style: solid;
+  border-color: #536878;
+  color: blue;
+  cursor: pointer;
+  position: relative;
+}
+
+.card .front {
+  transform: rotateY(90deg);
+  position: absolute;
+} 
+
+.flipped .front {
+  transform: rotateY(0deg);
+}
+
+
+
