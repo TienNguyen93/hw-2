@@ -1,6 +1,4 @@
-import { isDisabled } from "@testing-library/user-event/dist/utils";
 import React from "react";
-import { useState, useEffect } from 'react';
 
 const Card = ({ card, index, handleCardClick, isCardChosen}) => {
   const handleClick = () => {
