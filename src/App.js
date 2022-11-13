@@ -1,6 +1,6 @@
 import './App.css';
 import Card from './component/Card';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 const cardValues = [
   {
@@ -84,7 +84,19 @@ function App() {
     return cardsChosenIds.includes(index) || openCards.includes(card)
   }
 
-  
+  // set everything to initial state 
+  // & shuffle the cards
+  const resetGame = () => {
+    setCardsChosen([])
+    setCardsChosenIds([])
+    setOpenCards([])
+    createBoard()
+  }
+
+  // fire when app runs
+  useEffect(() => {
+    createBoard()
+  }, [])
 
   return (
     <div className='App'>
@@ -99,7 +111,7 @@ function App() {
           />
         ))}
       </div>
-      <button onClick={createBoard}>New Game</button>
+      <button onClick={resetGame}>New Game</button>
     </div>
   );
 }
