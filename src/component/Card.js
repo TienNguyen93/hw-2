@@ -8,7 +8,7 @@ const Card = ({ card, index, handleCardClick, isCardChosen}) => {
   return (
     <div className="card" onClick={handleClick}>
       {isCardChosen(card.type, index) 
-        ? <b>chosen + {card.type}</b> 
+        ? <b>{card.type}</b> 
         : <b>not chosen</b>}
     </div>
   )
