@@ -80,7 +80,6 @@ function App() {
   }
 
   const isCardChosen = (card, index) => {
-    console.log('isCardChosen function', card, index)
     return cardsChosenIds.includes(index) || openCards.includes(card)
   }
 
@@ -100,6 +99,9 @@ function App() {
 
   return (
     <div className='App'>
+      {openCards.length === cards.length 
+        ? <h1>You won!</h1> 
+        : ""}
       <div className='card-list'>
         {cards.map((card, index) => (
           <Card 
