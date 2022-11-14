@@ -5,22 +5,22 @@ import { useEffect, useState } from 'react';
 const cardValues = [
   {
     card: "Card",
-    type: "orange",
+    type: "Orange",
     match: false
   },
   {
     card: "Card",
-    type: "apple",
+    type: "Apple",
     match: false
   },
   {
     card: "Card",
-    type: "melon",
+    type: "Melon",
     match: false
   },
   {
     card: "Card",
-    type: "strawberry",
+    type: "Grape",
     match: false
   }
 ]
@@ -99,9 +99,7 @@ function App() {
 
   return (
     <div className='App'>
-      {openCards.length === cards.length 
-        ? <h1>You won!</h1> 
-        : ""}
+      <h1>Welcome to Memory Card Game!</h1>
       <div className='card-list'>
         {cards.map((card, index) => (
           <Card 
@@ -113,7 +111,12 @@ function App() {
           />
         ))}
       </div>
-      <button onClick={resetGame}>New Game</button>
+      {openCards.length === cards.length 
+        ? <h1>You won!</h1> 
+        : ""}
+      <button onClick={resetGame}>
+        <h3>New Game</h3>
+      </button>
     </div>
   );
 }

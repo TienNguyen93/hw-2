@@ -6,15 +6,6 @@
   justify-content: center;
 }
 
-.card-flip {
-  height: 100px;
-  width: 75px;
-  background-color: lightblue;
-  border-style: solid;
-  border-color: #536878;
-  color: white;
-}
-
 .card-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -25,16 +16,13 @@
   align-items: stretch;
 }
 
-
-.card {
-  height: 100px;
-  width: 75px;
-  background-color: #F5F5DC;
-  border-style: solid;
-  border-color: #536878;
-  color: blue;
+button {
+  background-color: #FFEFC9;
+  border-radius: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 0.5px solid;
   cursor: pointer;
-  position: relative;
 }
 
 
